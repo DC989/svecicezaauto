@@ -420,6 +420,7 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 480px) {
   .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .site-header { 
     flex-wrap: wrap; 
     gap: 12px;
