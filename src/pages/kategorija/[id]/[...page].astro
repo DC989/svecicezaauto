@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { CATEGORY_MAP, CATEGORY_NAMES, getProductsByCategorySlug } from '../../../utils/products';
+
+export async function getStaticPaths({ paginate }) {
+  const slugs = Array.from(new Set(Object.values(CATEGORY_MAP)));
+  return slugs.flatMap((slug) => {
+    const products = getProductsByCategorySlug(slug);
+    return paginate(products, {
+      params: { id: slug },
+      pageSize: 48,
+    });
+  });
+}
+
+const { page } = Astro.props;
+const { id } = Astro.params;
+const categoryName = CATEGORY_NAMES[id] || id;
+---
+<BaseLayout title={`${categoryName} | Svecicezaauto`} description={`Svi proizvodi u kategoriji ${categoryName}.`}>
+  <div class="body-layout">
+    <main class="catalog-content">
+      <div class="breadcrumb">
+        <a href="/">Početna</a> / <span>{categoryName}</span>
+      </div>
+      <h1 class="catalog-title">{categoryName}</h1>
+      
+      {page.data.length === 0 ? (
+        <p>Nema proizvoda u ovoj kategoriji.</p>
+      ) : (
+        <div class="products-grid">
+          {page.data.map((product) => (
+            <a href={`/proizvod/${product.id}`} class="product-card">
+              <div class="product-card__img-wrap">
+                {product.images && product.images[0] ? (
+                  <img src={`/${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="lazy" class="product-card__img" />
+                ) : (
+                  <div class="product-placeholder">Slika nije dostupna</div>
+                )}
+              </div>
+              <div class="product-card__info">
+                <span class="product-card__cat">{CATEGORY_NAMES[CATEGORY_MAP[product.category]]}</span>
+                <span class="product-card__pn">{product.part_number}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {page.lastPage > 1 && (
+        <div class="pagination">
+          {page.url.prev ? <a href={page.url.prev} class="page-link">&laquo; Prethodna</a> : <span class="page-link disabled">&laquo; Prethodna</span>}
+          <span class="page-info">Strana {page.currentPage} od {page.lastPage}</span>
+          {page.url.next ? <a href={page.url.next} class="page-link">Sledeća &raquo;</a> : <span class="page-link disabled">Sledeća &raquo;</span>}
+        </div>
+      )}
+    </main>
+  </div>
+</BaseLayout>

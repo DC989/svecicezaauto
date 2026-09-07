@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    id: 'modul-paljenja',
+    name: 'Modul paljenja',
+    parts: [
+      { name: 'Modul paljenja', img: '/parts/ignition-module.svg' },
+    ],
+  },
+  {
+    id: 'kontrolna-jedinica',
+    name: 'Kontrolna jedinica',
+    parts: [
+      { name: 'Kontrolna jedinica', img: '/parts/control-unit.svg' },
+    ],
+  },
+  {
+    id: 'kalem-za-paljenje-bobina',
+    name: 'Kalem za paljenje-Bobina',
+    parts: [
+      { name: 'Bobina', img: '/parts/ignition-coil.svg' },
+    ],
+  },
+  {
+    id: 'razvodnik-paljenja',
+    name: 'Razvodnik paljenja',
+    parts: [
+      { name: 'Razvodnik paljenja', img: '/parts/ignition-distributor.svg' },
+    ],
+  },
+  {
+    id: 'svecice',
+    name: 'Svećice',
+    parts: [
+      { name: 'Svećice / Grejači', img: '/parts/spark-plug.svg' },
+    ],
+  },
+  {
+    id: 'pogon-razvodnika-paljenja',
+    name: 'Pogon razvodnika paljenja',
+    parts: [
+      { name: 'Pogon razvodnika', img: '/parts/distributor-drive.svg' },
+    ],
+  },
+  {
+    id: 'kablovi-za-paljenje-delovi',
+    name: 'Kablovi za paljenje-Delovi',
+    parts: [
+      { name: 'Kablovi i delovi', img: '/parts/ignition-cable.svg' },
+    ],
+  },
+  {
+    id: 'otpornik',
+    name: 'Otpornik',
+    parts: [
+      { name: 'Otpornik', img: '/parts/resistor.svg' },
+    ],
+  },
+];
+
+const navCategories = categories.map(cat => ({
+  href: `/kategorija/${cat.id}`,
+  label: cat.name
+}));
+---
+<BaseLayout
+  title="Svećice za auto | Prodaja delova za paljenje"
+  description="Pronađite i kupite svećice, bobine, kablove i ostale delove za paljenje online. Pretraga po nazivu, OEM broju ili marki i modelu vozila."
+>
+  <!-- Body layout -->
+    <div class="body-layout">
+
+      <!-- Left nav -->
+      <nav class="left-nav" aria-label="Kategorije proizvoda">
+        <p class="left-nav__heading">Katalog</p>
+        <ul class="left-nav__list">
+          {navCategories.map(cat => (
+            <li class="left-nav__item">
+              <a href={cat.href} class="left-nav__link">{cat.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Catalog main content -->
+      <main class="catalog-content" id="main-content">
+        <h1 class="catalog-title">Sve kategorije</h1>
+
+        <div class="categories-grid">
+          {categories.map(cat => (
+            <section class="category-section" id={cat.id} aria-labelledby={`cat-heading-${cat.id}`}>
+              <h2 class="category-heading" id={`cat-heading-${cat.id}`}>{cat.name}</h2>
+              <div class="parts-row" role="list">
+                {cat.parts.map(part => (
+                  <a
+                    href={`/kategorija/${cat.id}`}
+                    class="part-thumb"
+                    role="listitem"
+                    aria-label={part.name}
+                  >
+                    <img
+                      src={part.img}
+                      alt={part.name}
+                      class="part-thumb__img"
+                      width="76"
+                      height="76"
+                      loading="lazy"
+                    />
+                    <span class="part-thumb__name">{part.name}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </main>
+    </div>
+
+  <script>
+    // Dismiss announcement
+    const btn = document.getElementById('close-announcement');
+    const banner = document.getElementById('announcement-banner');
+    btn?.addEventListener('click', () => {
+      banner?.style.setProperty('display', 'none');
+      sessionStorage.setItem('ann-dismissed', '1');
+    });
+    if (sessionStorage.getItem('ann-dismissed')) {
+      banner?.style.setProperty('display', 'none');
+    }
+
+    // Smooth scroll for left nav anchor links
+    document.querySelectorAll('.left-nav__link').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+        if (href?.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Active state
+          document.querySelectorAll('.left-nav__link').forEach(l => l.classList.remove('active'));
+          (e.currentTarget as HTMLElement).classList.add('active');
+        }
+      });
+    });
+
+    // Highlight active nav on scroll
+    const sections = document.querySelectorAll('.category-section[id]');
+    const navLinks = document.querySelectorAll('.left-nav__link');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(l => {
+              l.classList.toggle('active', l.getAttribute('href') === `#${entry.target.id}`);
+            });
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach(s => observer.observe(s));
+  </script>
+</BaseLayout>
