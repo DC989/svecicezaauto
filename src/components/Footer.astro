@@ -2,11 +2,11 @@
 ---
 <footer class="site-footer" role="contentinfo">
   <nav class="footer-links" aria-label="Linkovi u podnožju">
-    <a href="/">Početna</a>
+    <a href={import.meta.env.BASE_URL}>Početna</a>
     <span class="footer-sep" aria-hidden="true">/</span>
-    <a href="/dostava">Dostava</a>
+    <a href={`${import.meta.env.BASE_URL}dostava`}>Dostava</a>
     <span class="footer-sep" aria-hidden="true">/</span>
-    <a href="/kontakt">Kontakt</a>
+    <a href={`${import.meta.env.BASE_URL}kontakt`}>Kontakt</a>
   </nav>
   <p>© {new Date().getFullYear()} Svecicezaauto. Sva prava zadržana.</p>
 </footer>

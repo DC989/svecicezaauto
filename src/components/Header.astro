@@ -12,10 +12,10 @@
   </div>
 </div>
 <header class="site-header" role="banner">
-  <a href="/" class="site-logo" aria-label="Svecicezaauto — Početna">
+  <a href={import.meta.env.BASE_URL} class="site-logo" aria-label="Svecicezaauto — Početna">
     SVECICEZAAUTO
   </a>
-  <form class="search-form" role="search" action="/search" method="get" toolname="search_parts" tooldescription="Pretraga baze auto delova po broju dela">
+  <form class="search-form" role="search" action={`${import.meta.env.BASE_URL}search`} method="get" toolname="search_parts" tooldescription="Pretraga baze auto delova po broju dela">
     <label for="part-search" class="visually-hidden">Pretraga delova</label>
     <div class="search-input-wrap">
       <input

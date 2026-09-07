@@ -21,7 +21,7 @@ const categoryName = CATEGORY_NAMES[id] || id;
   <div class="body-layout">
     <main class="catalog-content">
       <div class="breadcrumb">
-        <a href="/">Početna</a> / <span>{categoryName}</span>
+        <a href={import.meta.env.BASE_URL}>Početna</a> / <span>{categoryName}</span>
       </div>
       <h1 class="catalog-title">{categoryName}</h1>
       
@@ -30,10 +30,10 @@ const categoryName = CATEGORY_NAMES[id] || id;
       ) : (
         <div class="products-grid">
           {page.data.map((product) => (
-            <a href={`/proizvod/${product.id}`} class="product-card">
+            <a href={`${import.meta.env.BASE_URL}proizvod/${product.id}`} class="product-card">
               <div class="product-card__img-wrap">
                 {product.images && product.images[0] ? (
-                  <img src={`/${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="lazy" class="product-card__img" />
+                  <img src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="lazy" class="product-card__img" />
                 ) : (
                   <div class="product-placeholder">Slika nije dostupna</div>
                 )}

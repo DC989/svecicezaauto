@@ -18,7 +18,7 @@ const categoryName = CATEGORY_NAMES[categorySlug] || product.category;
   <div class="body-layout">
     <main class="catalog-content">
       <div class="breadcrumb">
-        <a href="/">Početna</a> / <a href={`/kategorija/${categorySlug}`}>{categoryName}</a> / <span>{product.part_number}</span>
+        <a href={import.meta.env.BASE_URL}>Početna</a> / <a href={`${import.meta.env.BASE_URL}kategorija/${categorySlug}`}>{categoryName}</a> / <span>{product.part_number}</span>
       </div>
       
       <div class="product-detail">
@@ -26,7 +26,7 @@ const categoryName = CATEGORY_NAMES[categorySlug] || product.category;
           <div class="product-detail__gallery">
             <div class="product-detail__img-main">
               {product.images && product.images[0] ? (
-                <img src={`/${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="eager" />
+                <img src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="eager" />
               ) : (
                 <div class="product-placeholder">Slika nije dostupna</div>
               )}
@@ -63,7 +63,7 @@ const categoryName = CATEGORY_NAMES[categorySlug] || product.category;
                   Proizvođač:
                   {product.images.slice(1).map(img => (
                     <div style="height: 32px; display: flex; align-items: center;">
-                      <img src={`/${img.replace('images/', 'images/products/')}`} alt="Brand logo" style="max-height: 100%; max-width: 120px; object-fit: contain;" />
+                      <img src={`${import.meta.env.BASE_URL}${img.replace('images/', 'images/products/')}`} alt="Brand logo" style="max-height: 100%; max-width: 120px; object-fit: contain;" />
                     </div>
                   ))}
                 </div>

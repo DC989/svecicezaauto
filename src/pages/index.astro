@@ -6,62 +6,62 @@ const categories = [
     id: 'modul-paljenja',
     name: 'Modul paljenja',
     parts: [
-      { name: 'Modul paljenja', img: '/parts/ignition-module.svg' },
+      { name: 'Modul paljenja', img: `${import.meta.env.BASE_URL}parts/ignition-module.svg` },
     ],
   },
   {
     id: 'kontrolna-jedinica',
     name: 'Kontrolna jedinica',
     parts: [
-      { name: 'Kontrolna jedinica', img: '/parts/control-unit.svg' },
+      { name: 'Kontrolna jedinica', img: `${import.meta.env.BASE_URL}parts/control-unit.svg` },
     ],
   },
   {
     id: 'kalem-za-paljenje-bobina',
     name: 'Kalem za paljenje-Bobina',
     parts: [
-      { name: 'Bobina', img: '/parts/ignition-coil.svg' },
+      { name: 'Bobina', img: `${import.meta.env.BASE_URL}parts/ignition-coil.svg` },
     ],
   },
   {
     id: 'razvodnik-paljenja',
     name: 'Razvodnik paljenja',
     parts: [
-      { name: 'Razvodnik paljenja', img: '/parts/ignition-distributor.svg' },
+      { name: 'Razvodnik paljenja', img: `${import.meta.env.BASE_URL}parts/ignition-distributor.svg` },
     ],
   },
   {
     id: 'svecice',
     name: 'Svećice',
     parts: [
-      { name: 'Svećice / Grejači', img: '/parts/spark-plug.svg' },
+      { name: 'Svećice / Grejači', img: `${import.meta.env.BASE_URL}parts/spark-plug.svg` },
     ],
   },
   {
     id: 'pogon-razvodnika-paljenja',
     name: 'Pogon razvodnika paljenja',
     parts: [
-      { name: 'Pogon razvodnika', img: '/parts/distributor-drive.svg' },
+      { name: 'Pogon razvodnika', img: `${import.meta.env.BASE_URL}parts/distributor-drive.svg` },
     ],
   },
   {
     id: 'kablovi-za-paljenje-delovi',
     name: 'Kablovi za paljenje-Delovi',
     parts: [
-      { name: 'Kablovi i delovi', img: '/parts/ignition-cable.svg' },
+      { name: 'Kablovi i delovi', img: `${import.meta.env.BASE_URL}parts/ignition-cable.svg` },
     ],
   },
   {
     id: 'otpornik',
     name: 'Otpornik',
     parts: [
-      { name: 'Otpornik', img: '/parts/resistor.svg' },
+      { name: 'Otpornik', img: `${import.meta.env.BASE_URL}parts/resistor.svg` },
     ],
   },
 ];
 
 const navCategories = categories.map(cat => ({
-  href: `/kategorija/${cat.id}`,
+  href: `${import.meta.env.BASE_URL}kategorija/${cat.id}`,
   label: cat.name
 }));
 ---
@@ -95,7 +95,7 @@ const navCategories = categories.map(cat => ({
               <div class="parts-row" role="list">
                 {cat.parts.map(part => (
                   <a
-                    href={`/kategorija/${cat.id}`}
+                    href={`${import.meta.env.BASE_URL}kategorija/${cat.id}`}
                     class="part-thumb"
                     role="listitem"
                     aria-label={part.name}
