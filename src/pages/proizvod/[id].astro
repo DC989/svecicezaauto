@@ -13,8 +13,21 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 const categorySlug = CATEGORY_MAP[product.category];
 const categoryName = CATEGORY_NAMES[categorySlug] || product.category;
+
+const schema = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": `Deo ${product.part_number} - ${categoryName}`,
+  "sku": product.part_number,
+  "mpn": product.part_number,
+  "image": new URL(`${import.meta.env.BASE_URL}parts/part-default.svg`, Astro.site),
+  "description": product.description || `Kupi deo ${product.part_number} online.`
+};
 ---
-<BaseLayout title={`${product.part_number} | Svecicezaauto`} description={product.description || `Kupi ${product.part_number} online.`}>
+<BaseLayout title={`Deo ${product.part_number} - Prodaja delova za paljenje`} description={`${categoryName} - Deo ${product.part_number}. Proverite cenu i dostupnost.`}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
   <div class="body-layout">
     <main class="catalog-content">
       <div class="breadcrumb">

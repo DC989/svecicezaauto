@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://svecicezaauto.rs/sitemap-index.xml
