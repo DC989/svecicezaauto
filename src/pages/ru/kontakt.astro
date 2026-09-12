@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ru');
+---
+
+<BaseLayout title={`Контакты - ${t('meta.prodTitleSuffix')}`}>
+  <main class="page-content">
+    <div class="content-header">
+      <h1 class="page-title">Контакты</h1>
+      <p class="page-description">
+        По всем вопросам о наличии, совместимости деталей или оформлении заказа свяжитесь с нами через Viber или WhatsApp.
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Главный контакт</h2>
+      <p>Самый быстрый способ получить ответ — отправить нам <strong>номер детали (OE номер)</strong> и модель вашего автомобиля в сообщении.</p>
+      
+      <div class="contact-methods">
+        <a href="viber://chat?number=%2B381665040583" class="btn viber-btn">
+          Viber (+381 66 504 0583)
+        </a>
+        <a href="https://wa.me/381665040583" class="btn whatsapp-btn">
+          WhatsApp (+381 66 504 0583)
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding: 24px;
+    max-width: 800px;
+  }
+
+  .content-header {
+    margin-bottom: 32px;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 16px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--black);
+  }
+
+  .page-description {
+    font-size: 16px;
+    color: #444;
+    margin: 0;
+  }
+
+  .contact-card {
+    background: var(--white);
+    border: var(--border);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .contact-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  .contact-methods {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .detail-block {
+    background: var(--white);
+    border: var(--border);
+    padding: 20px;
+  }
+
+  .detail-block h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .detail-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .detail-block li, .detail-block p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  .note {
+    margin-top: 16px;
+    font-size: 13px !important;
+    color: #c00;
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .contact-methods {
+      flex-direction: column;
+    }
+    .contact-details {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

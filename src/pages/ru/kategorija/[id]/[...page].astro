@@ -1,6 +1,6 @@
 ---
-import CategoryPage from '../../../components/pages/CategoryPage.astro';
-import { CATEGORY_MAP, getProductsByCategorySlug } from '../../../utils/products';
+import CategoryPage from '../../../../components/pages/CategoryPage.astro';
+import { CATEGORY_MAP, getProductsByCategorySlug } from '../../../../utils/products';
 
 export async function getStaticPaths({ paginate }) {
   const slugs = Array.from(new Set(Object.values(CATEGORY_MAP)));

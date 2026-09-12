@@ -1,12 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 <footer class="site-footer" role="contentinfo">
   <nav class="footer-links" aria-label="Linkovi u podnožju">
-    <a href={import.meta.env.BASE_URL}>Početna</a>
+    <a href={translatePath('/')}>{t('product.home')}</a>
     <span class="footer-sep" aria-hidden="true">/</span>
-    <a href={`${import.meta.env.BASE_URL}dostava`}>Dostava</a>
+    <a href={translatePath('/dostava')}>{t('footer.delivery')}</a>
     <span class="footer-sep" aria-hidden="true">/</span>
-    <a href={`${import.meta.env.BASE_URL}kontakt`}>Kontakt</a>
+    <a href={translatePath('/kontakt')}>{t('footer.contact')}</a>
   </nav>
-  <p>© {new Date().getFullYear()} Svecicezaauto. Sva prava zadržana.</p>
+  <p>© {new Date().getFullYear()} Svecicezaauto. {t('footer.rights')}</p>
 </footer>

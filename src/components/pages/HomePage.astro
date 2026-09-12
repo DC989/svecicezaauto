@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const categories = [
+  {
+    id: 'modul-paljenja',
+    name: t('cat.modul-paljenja'),
+    parts: [
+      { name: t('cat.modul-paljenja'), img: `${import.meta.env.BASE_URL}parts/ignition-module.svg` },
+    ],
+  },
+  {
+    id: 'kontrolna-jedinica',
+    name: t('cat.kontrolna-jedinica'),
+    parts: [
+      { name: t('cat.kontrolna-jedinica'), img: `${import.meta.env.BASE_URL}parts/control-unit.svg` },
+    ],
+  },
+  {
+    id: 'kalem-za-paljenje-bobina',
+    name: t('cat.kalem-za-paljenje-bobina'),
+    parts: [
+      { name: 'Bobina', img: `${import.meta.env.BASE_URL}parts/ignition-coil.svg` },
+    ],
+  },
+  {
+    id: 'razvodnik-paljenja',
+    name: t('cat.razvodnik-paljenja'),
+    parts: [
+      { name: t('cat.razvodnik-paljenja'), img: `${import.meta.env.BASE_URL}parts/ignition-distributor.svg` },
+    ],
+  },
+  {
+    id: 'svecice',
+    name: t('cat.svecice'),
+    parts: [
+      { name: 'Svećice / Grejači', img: `${import.meta.env.BASE_URL}parts/spark-plug.svg` },
+    ],
+  },
+  {
+    id: 'pogon-razvodnika-paljenja',
+    name: t('cat.pogon-razvodnika-paljenja'),
+    parts: [
+      { name: 'Pogon razvodnika', img: `${import.meta.env.BASE_URL}parts/distributor-drive.svg` },
+    ],
+  },
+  {
+    id: 'kablovi-za-paljenje-delovi',
+    name: t('cat.kablovi-za-paljenje-delovi'),
+    parts: [
+      { name: 'Kablovi i delovi', img: `${import.meta.env.BASE_URL}parts/ignition-cable.svg` },
+    ],
+  },
+  {
+    id: 'otpornik',
+    name: t('cat.otpornik'),
+    parts: [
+      { name: t('cat.otpornik'), img: `${import.meta.env.BASE_URL}parts/resistor.svg` },
+    ],
+  },
+];
+
+const navCategories = categories.map(cat => ({
+  href: translatePath(`/kategorija/${cat.id}`),
+  label: cat.name
+}));
+---
+<BaseLayout
+  title={t('meta.homeTitle')}
+  description={t('meta.homeDesc')}
+>
+  <!-- Body layout -->
+    <div class="body-layout">
+
+      <!-- Left nav -->
+      <nav class="left-nav" aria-label="Kategorije proizvoda">
+        <p class="left-nav__heading">{t('nav.catalog')}</p>
+        <ul class="left-nav__list">
+          {navCategories.map(cat => (
+            <li class="left-nav__item">
+              <a href={cat.href} class="left-nav__link">{cat.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Catalog main content -->
+      <main class="catalog-content" id="main-content">
+        <h1 class="catalog-title">{t('page.allCategories')}</h1>
+
+        <div class="categories-grid">
+          {categories.map(cat => (
+            <section class="category-section" id={cat.id} aria-labelledby={`cat-heading-${cat.id}`}>
+              <h2 class="category-heading" id={`cat-heading-${cat.id}`}>{cat.name}</h2>
+              <div class="parts-row" role="list">
+                {cat.parts.map(part => (
+                  <a
+                    href={translatePath(`/kategorija/${cat.id}`)}
+                    class="part-thumb"
+                    role="listitem"
+                    aria-label={part.name}
+                  >
+                    <img
+                      src={part.img}
+                      alt={part.name}
+                      class="part-thumb__img"
+                      width="76"
+                      height="76"
+                      loading="lazy"
+                    />
+                    <span class="part-thumb__name">{part.name}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </main>
+    </div>
+
+  <script>
+    // Dismiss announcement
+    const btn = document.getElementById('close-announcement');
+    const banner = document.getElementById('announcement-banner');
+    btn?.addEventListener('click', () => {
+      banner?.style.setProperty('display', 'none');
+      sessionStorage.setItem('ann-dismissed', '1');
+    });
+    if (sessionStorage.getItem('ann-dismissed')) {
+      banner?.style.setProperty('display', 'none');
+    }
+
+    // Smooth scroll for left nav anchor links
+    document.querySelectorAll('.left-nav__link').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+        if (href?.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Active state
+          document.querySelectorAll('.left-nav__link').forEach(l => l.classList.remove('active'));
+          (e.currentTarget as HTMLElement).classList.add('active');
+        }
+      });
+    });
+
+    // Highlight active nav on scroll
+    const sections = document.querySelectorAll('.category-section[id]');
+    const navLinks = document.querySelectorAll('.left-nav__link');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(l => {
+              l.classList.toggle('active', l.getAttribute('href') === `#${entry.target.id}`);
+            });
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach(s => observer.observe(s));
+  </script>
+</BaseLayout>

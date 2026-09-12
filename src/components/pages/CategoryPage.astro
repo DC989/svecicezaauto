@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORY_MAP, CATEGORY_NAMES } from '../../utils/products';
+import { useTranslations, getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+
+interface Props {
+  page: any;
+  id: string;
+}
+
+const { page, id } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const translationKey = `cat.${id}` as keyof typeof t;
+// @ts-ignore
+const categoryName = t(translationKey) !== translationKey ? t(translationKey) : (CATEGORY_NAMES[id] || id);
+---
+<BaseLayout title={`${categoryName} - ${t('meta.prodTitleSuffix')}`} description={`Svi proizvodi u kategoriji ${categoryName}. Pretraga, cene i dostupnost.`}>
+  <div class="body-layout">
+    <main class="catalog-content">
+      <div class="breadcrumb">
+        <a href={translatePath('/')}>{t('product.home')}</a> / <span>{categoryName}</span>
+      </div>
+      <h1 class="catalog-title">{categoryName}</h1>
+      
+      {page.data.length === 0 ? (
+        <p>{t('cat.empty')}</p>
+      ) : (
+        <div class="products-grid">
+          {page.data.map((product: any) => {
+            const productCatSlug = CATEGORY_MAP[product.category];
+            const productCatKey = `cat.${productCatSlug}` as keyof typeof t;
+            // @ts-ignore
+            const productCatName = t(productCatKey) !== productCatKey ? t(productCatKey) : (CATEGORY_NAMES[productCatSlug] || productCatSlug);
+            return (
+            <a href={translatePath(`/proizvod/${product.id}`)} class="product-card">
+              <div class="product-card__img-wrap">
+                {product.images && product.images[0] ? (
+                  <img src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="lazy" class="product-card__img" />
+                ) : (
+                  <div class="product-placeholder">{t('product.noImage')}</div>
+                )}
+              </div>
+              <div class="product-card__info">
+                <span class="product-card__cat">{productCatName}</span>
+                <span class="product-card__pn">{product.part_number}</span>
+              </div>
+            </a>
+          )})}
+        </div>
+      )}
+
+      {page.lastPage > 1 && (
+        <div class="pagination">
+          {page.url.prev ? <a href={translatePath(page.url.prev.replace(`/${lang}/`, '/'))} class="page-link">&laquo; {t('pagination.prev')}</a> : <span class="page-link disabled">&laquo; {t('pagination.prev')}</span>}
+          <span class="page-info">{t('pagination.page')} {page.currentPage} {t('pagination.of')} {page.lastPage}</span>
+          {page.url.next ? <a href={translatePath(page.url.next.replace(`/${lang}/`, '/'))} class="page-link">{t('pagination.next')} &raquo;</a> : <span class="page-link disabled">{t('pagination.next')} &raquo;</span>}
+        </div>
+      )}
+    </main>
+  </div>
+</BaseLayout>

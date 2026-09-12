@@ -1,6 +1,6 @@
 ---
-import ProductPage from '../../components/pages/ProductPage.astro';
-import { getAllProducts } from '../../utils/products';
+import ProductPage from '../../../components/pages/ProductPage.astro';
+import { getAllProducts } from '../../../utils/products';
 
 export async function getStaticPaths() {
   const products = getAllProducts();

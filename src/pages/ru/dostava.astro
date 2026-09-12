@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ru');
+---
+
+<BaseLayout title={`Доставка - ${t('meta.prodTitleSuffix')}`}>
+  <main class="page-content">
+    <div class="content-header">
+      <h1 class="page-title">Информация о доставке</h1>
+      <p class="page-description">
+        Все детали, связанные с получением и отправкой посылок, вы можете прочитать ниже.
+      </p>
+    </div>
+
+    <div class="delivery-blocks">
+      <div class="delivery-card">
+        <h2>Отправка курьерскими службами</h2>
+        <p>Мы отправляем все заказанные детали курьерскими службами по всей территории Сербии. Оплата производится исключительно <strong>наложенным платежом</strong> – курьеру при получении посылки.</p>
+        <p>Расходы на доставку несет покупатель согласно действующему прейскуранту курьерской службы.</p>
+      </div>
+
+      <div class="delivery-card personal-delivery">
+        <h2>Личная доставка (Белград)</h2>
+        <p>Для заказов на сумму свыше <strong>25.000 RSD</strong> (сумма обсуждается), мы предлагаем возможность личной доставки по территории Белграда.</p>
+        <p>Эта опция согласовывается непосредственно при оформлении заказа через Viber или WhatsApp.</p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-content {
+    padding: 24px;
+    max-width: 800px;
+  }
+
+  .content-header {
+    margin-bottom: 32px;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 16px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--black);
+  }
+
+  .page-description {
+    font-size: 16px;
+    color: #444;
+    margin: 0;
+  }
+
+  .delivery-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .delivery-card {
+    background: var(--white);
+    border: var(--border);
+    padding: 24px;
+  }
+
+  .delivery-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    color: var(--blue);
+  }
+
+  .delivery-card p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  .delivery-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .personal-delivery {
+    border-color: var(--yellow-dark);
+    border-top-width: 4px;
+  }
+
+  .personal-delivery h2 {
+    color: var(--black);
+  }
+</style>
