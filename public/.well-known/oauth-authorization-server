@@ -1,0 +1,16 @@
+{
+  "issuer": "https://svecicezaauto.rs",
+  "authorization_endpoint": "https://svecicezaauto.rs/auth.md",
+  "token_endpoint": "https://svecicezaauto.rs/auth.md",
+  "scopes_supported": ["public"],
+  "response_types_supported": ["none"],
+  "grant_types_supported": ["none"],
+  "service_documentation": "https://svecicezaauto.rs/llms.txt",
+  "op_policy_uri": "https://svecicezaauto.rs/ai.txt",
+  "agent_auth": {
+    "auth_md_uri": "https://svecicezaauto.rs/auth.md",
+    "supported_identity_types": ["none"],
+    "supported_credential_types": ["none"],
+    "description": "This is a fully public website. No authentication is required to access any content or data. All product catalog data, search index, and documentation are freely accessible."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "name": "svecicezaauto",
+  "description": "Agent skills for discovering and searching auto ignition parts at svecicezaauto.rs. Covers 20,000+ parts across 8 categories.",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "search-parts",
+      "type": "skill",
+      "description": "Search for auto ignition parts by OEM part number across 20,000+ products including spark plugs, ignition coils, control units, distributors, modules, cables, distributor drives, and resistors.",
+      "url": "https://svecicezaauto.rs/.well-known/agent-skills/search-parts/SKILL.md",
+      "sha256": "4538b03465834e483aa6c8c2d3aafd3ee9a4bd4d36bd56c2ae457828b38391c5"
+    },
+    {
+      "name": "browse-categories",
+      "type": "skill",
+      "description": "Browse auto ignition parts by category. 8 categories available covering spark plugs, ignition coils, control units, distributors, ignition modules, ignition cables, distributor drives, and resistors.",
+      "url": "https://svecicezaauto.rs/.well-known/agent-skills/browse-categories/SKILL.md",
+      "sha256": "63a5fc282d7bcb5c5460c7641cf90ce992b07e98c1dd7036bfeae45b5b798064"
+    },
+    {
+      "name": "vehicle-compatibility",
+      "type": "skill",
+      "description": "Check which vehicles are compatible with a specific auto part. Product pages list compatible vehicle makes, models, engine types, and year ranges.",
+      "url": "https://svecicezaauto.rs/.well-known/agent-skills/vehicle-compatibility/SKILL.md",
+      "sha256": "3883e72bfd2e02e80496eab14637a2be7de8972d0cbea5a6c201fcfc9a611dbf"
+    }
+  ]
+}

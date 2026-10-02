@@ -1,0 +1,48 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://svecicezaauto.rs/",
+      "service-desc": [
+        {
+          "href": "https://svecicezaauto.rs/.well-known/ai-plugin.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://svecicezaauto.rs/.well-known/agent.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://svecicezaauto.rs/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://svecicezaauto.rs/llms-full.txt",
+          "type": "text/markdown"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://svecicezaauto.rs/apis.json",
+          "type": "application/json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://svecicezaauto.rs/search-index.json",
+      "service-desc": [
+        {
+          "href": "https://svecicezaauto.rs/apis.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://svecicezaauto.rs/llms.txt",
+          "type": "text/markdown"
+        }
+      ]
+    }
+  ]
+}

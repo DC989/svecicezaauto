@@ -1,0 +1,10 @@
+{
+  "resource": "https://svecicezaauto.rs",
+  "authorization_servers": ["https://svecicezaauto.rs"],
+  "scopes_supported": ["public"],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://svecicezaauto.rs/llms.txt",
+  "resource_policy_uri": "https://svecicezaauto.rs/ai.txt",
+  "resource_signing_alg_values_supported": [],
+  "description": "Public auto parts catalog. No authentication required. All endpoints are freely accessible."
+}

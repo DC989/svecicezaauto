@@ -1,0 +1,97 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "name": "Svecicezaauto",
+    "url": "https://svecicezaauto.rs",
+    "description": "Online auto parts catalog specializing in ignition system components. 20,000+ parts serving Serbian and Russian-speaking markets.",
+    "contact": {
+      "viber": "+381665040583",
+      "whatsapp": "+381665040583",
+      "url": "https://svecicezaauto.rs/kontakt"
+    }
+  },
+  "entries": [
+    {
+      "id": "urn:air:svecicezaauto.rs:catalog:search-index",
+      "displayName": "Auto Parts Search Index",
+      "description": "Complete JSON index of 20,000+ auto ignition parts with part numbers and categories for programmatic search and discovery.",
+      "type": "application/json",
+      "url": "https://svecicezaauto.rs/search-index.json",
+      "representativeQueries": [
+        "search for auto ignition parts by OEM number",
+        "find spark plug part number for my car",
+        "look up ignition coil availability",
+        "search svecicezaauto catalog",
+        "find auto part 19571035"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:docs:llms-txt",
+      "displayName": "LLM Site Summary",
+      "description": "Machine-readable Markdown summary of the svecicezaauto.rs auto parts catalog, categories, search endpoints, and contact information.",
+      "type": "text/markdown",
+      "url": "https://svecicezaauto.rs/llms.txt",
+      "representativeQueries": [
+        "what does svecicezaauto sell",
+        "svecicezaauto product categories",
+        "auto parts store in Serbia"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:docs:llms-full",
+      "displayName": "Complete Reference Documentation",
+      "description": "Full concatenated reference documentation for AI ingestion. Contains all product categories, URL structure, delivery information, and contact details.",
+      "type": "text/markdown",
+      "url": "https://svecicezaauto.rs/llms-full.txt",
+      "representativeQueries": [
+        "svecicezaauto full documentation",
+        "how to order parts from svecicezaauto",
+        "svecicezaauto delivery and shipping info"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:protocol:mcp-server",
+      "displayName": "MCP Server Card",
+      "description": "Model Context Protocol server card describing catalog capabilities and resources for MCP-compatible AI agents.",
+      "type": "application/json",
+      "url": "https://svecicezaauto.rs/.well-known/mcp.json",
+      "representativeQueries": [
+        "svecicezaauto MCP server capabilities",
+        "connect to svecicezaauto via MCP"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:protocol:ai-plugin",
+      "displayName": "AI Plugin Manifest",
+      "description": "OpenAI-compatible plugin manifest for AI agent integration with the auto parts catalog.",
+      "type": "application/json",
+      "url": "https://svecicezaauto.rs/.well-known/ai-plugin.json",
+      "representativeQueries": [
+        "svecicezaauto AI plugin",
+        "integrate svecicezaauto with ChatGPT"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:protocol:agent-skills",
+      "displayName": "Agent Skills Index",
+      "description": "Discovery index of agent skills including part search, category browsing, and vehicle compatibility checking.",
+      "type": "application/json",
+      "url": "https://svecicezaauto.rs/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "what can svecicezaauto agents do",
+        "svecicezaauto agent capabilities"
+      ]
+    },
+    {
+      "id": "urn:air:svecicezaauto.rs:discovery:sitemap",
+      "displayName": "XML Sitemap Index",
+      "description": "Complete XML sitemap covering all 42,000+ pages including product pages in Serbian and Russian.",
+      "type": "application/xml",
+      "url": "https://svecicezaauto.rs/sitemap-index.xml",
+      "representativeQueries": [
+        "svecicezaauto sitemap",
+        "all pages on svecicezaauto"
+      ]
+    }
+  ]
+}

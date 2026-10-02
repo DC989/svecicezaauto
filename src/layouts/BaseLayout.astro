@@ -64,8 +64,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="service-desc" href="/.well-known/mcp.json" type="application/json" />
     <link rel="service-desc" href="/.well-known/ai-plugin.json" type="application/json" />
     <link rel="service-desc" href="/.well-known/agent.json" type="application/json" />
-    <link rel="api-catalog" href="/apis.json" type="application/json" />
-    <link rel="author" href="/Auth.md" type="text/markdown" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+    <link rel="describedby" href="/.well-known/ai-catalog.json" type="application/json" />
+    <link rel="describedby" href="/.well-known/agent-skills/index.json" type="application/json" />
+    <link rel="author" href="/auth.md" type="text/markdown" />
+    <link rel="oauth-protected-resource" href="/.well-known/oauth-protected-resource" type="application/json" />
 
     <!-- Content Signals: Allow search & RAG, block training -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
