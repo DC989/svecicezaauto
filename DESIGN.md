@@ -1,6 +1,6 @@
 # Design System
 
-## Thesis
+#### Thesis
 A utility-first parts catalog for individual car owners that earns authority through information density, not decoration. The design refuses the generic e-commerce hero and promotional card grid; every pixel is optimized for part discovery and fitment verification.
 
 ## Brand & Visual World
