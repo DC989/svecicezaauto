@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card.json",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "svecicezaauto",
+    "title": "Svecicezaauto — Auto Parts Catalog",
+    "version": "1.0.0",
+    "description": "Auto parts catalog with 20,000+ ignition system parts. Search by part number, browse categories, and check vehicle compatibility. Serves Serbian and Russian markets."
+  },
+  "capabilities": {
+    "resources": {
+      "listChanged": false
+    }
+  },
+  "links": {
+    "website": "https://svecicezaauto.rs",
+    "catalog": "https://svecicezaauto.rs/llms.txt",
+    "search": "https://svecicezaauto.rs/search-index.json",
+    "sitemap": "https://svecicezaauto.rs/sitemap-index.xml"
+  }
+}

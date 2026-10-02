@@ -1,0 +1,148 @@
+# Svecicezaauto — Complete Auto Ignition Parts Reference
+
+> Full reference documentation for AI ingestion. This file contains all essential information about the svecicezaauto.rs auto parts catalog in a single document.
+
+---
+
+# About Svecicezaauto
+
+Svecicezaauto is an online store specializing in automotive ignition system parts, headquartered in Belgrade, Serbia. The business serves the Serbian and Russian-speaking markets with a catalog of over 20,000 individual parts.
+
+**Key Facts:**
+- Website: https://svecicezaauto.rs
+- Languages: Serbian (default), Russian (/ru/ prefix)
+- Contact: Viber/WhatsApp +381 66 504 0583
+- Pricing: Available on request (not displayed on website)
+- Payment: Cash on delivery (pouzeće) via courier
+- Delivery: Courier services (BEX, AKS, Post Express) across Serbia
+- Personal delivery available in Belgrade for orders over 25,000 RSD
+
+---
+
+# Product Categories
+
+The catalog is organized into 8 ignition system categories:
+
+## 1. Spark Plugs (Svećice)
+- **URL**: /kategorija/svecice
+- **Russian**: Свечи зажигания
+- **Description**: Spark plugs and glow plugs for petrol and diesel engines across all vehicle makes and models.
+
+## 2. Ignition Coils — Bobina (Kalem za paljenje)
+- **URL**: /kategorija/kalem-za-paljenje-bobina
+- **Russian**: Катушка зажигания
+- **Description**: Individual coils, coil packs, and coil-on-plug units for modern and classic ignition systems.
+
+## 3. Control Units (Kontrolna jedinica)
+- **URL**: /kategorija/kontrolna-jedinica
+- **Russian**: Блок управления
+- **Description**: Electronic ignition control units (ICU/ECU) for various vehicle platforms.
+
+## 4. Ignition Distributors (Razvodnik paljenja)
+- **URL**: /kategorija/razvodnik-paljenja
+- **Russian**: Распределитель зажигания
+- **Description**: Complete distributor assemblies, caps, rotors for mechanical and electronic ignition systems.
+
+## 5. Ignition Modules (Modul paljenja)
+- **URL**: /kategorija/modul-paljenja
+- **Russian**: Модуль зажигания
+- **Description**: Ignition amplifier and switching modules.
+
+## 6. Ignition Cables (Kablovi za paljenje)
+- **URL**: /kategorija/kablovi-za-paljenje-delovi
+- **Russian**: Высоковольтные провода
+- **Description**: High-voltage ignition wire sets, individual cables, and connector components.
+
+## 7. Distributor Drives (Pogon razvodnika paljenja)
+- **URL**: /kategorija/pogon-razvodnika-paljenja
+- **Russian**: Привод распределителя
+- **Description**: Distributor drive gears, shafts, and coupling components.
+
+## 8. Resistors (Otpornik)
+- **URL**: /kategorija/otpornik
+- **Russian**: Резистор
+- **Description**: Ballast resistors for ignition systems.
+
+---
+
+# How to Find Parts
+
+## By Part Number (OEM Number)
+The most reliable way to find a part is by its OEM part number. Use the search functionality:
+- **Search page**: https://svecicezaauto.rs/search
+- **Search index (JSON)**: https://svecicezaauto.rs/search-index.json
+
+The search index contains all 20,000+ parts in JSON format with fields:
+- `id`: Unique product identifier
+- `part_number`: OEM/manufacturer part number
+- `category`: Product category slug
+
+## By Category
+Browse all products within a category at `/kategorija/{category-slug}`.
+Pages are paginated. Available category slugs:
+- `svecice`
+- `kalem-za-paljenje-bobina`
+- `kontrolna-jedinica`
+- `razvodnik-paljenja`
+- `modul-paljenja`
+- `kablovi-za-paljenje-delovi`
+- `pogon-razvodnika-paljenja`
+- `otpornik`
+
+## By Vehicle
+Each product page at `/proizvod/{id}` includes a vehicle compatibility table showing:
+- Vehicle make (e.g., BMW, Audi, Volkswagen)
+- Vehicle models (e.g., Golf IV, Passat B5)
+- Engine range/type
+- Year range (from–to)
+
+**Important**: Vehicle compatibility data is informational and may not be complete. Contact the store to confirm fitment for your specific vehicle.
+
+---
+
+# URL Structure
+
+| Page Type | Serbian URL | Russian URL |
+|---|---|---|
+| Homepage | `/` | `/ru/` |
+| Category | `/kategorija/{slug}` | `/ru/kategorija/{slug}` |
+| Product | `/proizvod/{id}` | `/ru/proizvod/{id}` |
+| Search | `/search` | `/ru/search` |
+| Delivery Info | `/dostava` | `/ru/dostava` |
+| Contact | `/kontakt` | `/ru/kontakt` |
+
+---
+
+# Delivery Information
+
+## Courier Delivery (All of Serbia)
+- All orders are shipped via courier services across Serbia
+- Payment method: Cash on delivery (pouzeće) — pay the courier when you receive the package
+- Shipping costs are borne by the buyer according to the courier's current price list
+
+## Personal Delivery (Belgrade Only)
+- Available for orders over 25,000 RSD (amount subject to negotiation)
+- Arranged directly via Viber or WhatsApp during the ordering process
+
+---
+
+# Contact Information
+
+- **Viber**: +381 66 504 0583
+- **WhatsApp**: +381 66 504 0583
+- **Contact page**: https://svecicezaauto.rs/kontakt
+
+For the fastest response, send the **part number (OEM number)** and your **vehicle model** in the message.
+
+---
+
+# Technical Information
+
+- **Platform**: Static site built with Astro
+- **Hosting**: GitHub Pages
+- **Domain**: svecicezaauto.rs
+- **Search**: Client-side search using JSON index
+- **Authentication**: None required (fully public)
+- **API**: Static JSON search index at /search-index.json
+- **Sitemap**: /sitemap-index.xml
+- **Structured Data**: Schema.org Product markup on product pages

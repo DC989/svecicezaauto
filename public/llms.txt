@@ -1,0 +1,33 @@
+# Svecicezaauto — Auto Ignition Parts Catalog
+
+> Svecicezaauto is an online auto parts store specializing in ignition system components, serving the Serbian and Russian-speaking markets. The catalog contains over 20,000 parts including spark plugs, ignition coils (bobina), control units, ignition distributors, ignition modules, ignition cables, distributor drives, and resistors. Prices are available on request via Viber or WhatsApp. Delivery is available across Serbia via courier services (BEX, AKS, Post Express) with cash-on-delivery payment.
+
+> When searching for parts, use the OEM part number for precise matches. Each product page includes vehicle compatibility data (make, model, engine, year range). The site is available in Serbian (default, no URL prefix) and Russian (/ru/ prefix).
+
+## Product Categories
+
+- [Spark Plugs (Svećice)](https://svecicezaauto.rs/kategorija/svecice): Spark plugs and glow plugs for all vehicle makes
+- [Ignition Coils (Bobina)](https://svecicezaauto.rs/kategorija/kalem-za-paljenje-bobina): Ignition coils for petrol and diesel engines
+- [Control Units (Kontrolna jedinica)](https://svecicezaauto.rs/kategorija/kontrolna-jedinica): Electronic ignition control units
+- [Ignition Distributors (Razvodnik paljenja)](https://svecicezaauto.rs/kategorija/razvodnik-paljenja): Mechanical and electronic distributors
+- [Ignition Modules (Modul paljenja)](https://svecicezaauto.rs/kategorija/modul-paljenja): Ignition amplifier modules
+- [Ignition Cables (Kablovi za paljenje)](https://svecicezaauto.rs/kategorija/kablovi-za-paljenje-delovi): High-voltage ignition wire sets and components
+- [Distributor Drives (Pogon razvodnika paljenja)](https://svecicezaauto.rs/kategorija/pogon-razvodnika-paljenja): Distributor drive gears and shafts
+- [Resistors (Otpornik)](https://svecicezaauto.rs/kategorija/otpornik): Ignition system ballast resistors
+
+## Data & Search
+
+- [Search Index (JSON)](https://svecicezaauto.rs/search-index.json): Complete searchable index of all 20,000+ parts with part numbers and categories
+- [XML Sitemap](https://svecicezaauto.rs/sitemap-index.xml): Full sitemap for crawlers
+- [Search Page](https://svecicezaauto.rs/search): Interactive search interface
+
+## Site Info
+
+- [Delivery Information](https://svecicezaauto.rs/dostava): Shipping methods and terms
+- [Contact](https://svecicezaauto.rs/kontakt): Viber and WhatsApp contact for pricing and availability
+
+## Optional
+
+- [API Directory](https://svecicezaauto.rs/apis.json): Machine-readable API catalog
+- [AI Plugin Manifest](https://svecicezaauto.rs/.well-known/ai-plugin.json): AI plugin configuration
+- [Agent Skills](https://svecicezaauto.rs/.well-known/agent.json): Agent capabilities manifest

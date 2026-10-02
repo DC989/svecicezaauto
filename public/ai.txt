@@ -1,0 +1,60 @@
+# ===========================================
+# ai.txt — AI Content Usage Policy
+# svecicezaauto.rs
+# ===========================================
+# Compliant with EU CDSM Directive Article 4
+# Spawning AI Rights Reservation Protocol
+#
+# This file declares how AI systems may use
+# content from this website.
+# ===========================================
+
+# Allow AI search indexing and real-time retrieval (RAG)
+# for citations and product discovery
+User-Agent: OAI-SearchBot
+Allow: text
+
+User-Agent: Claude-SearchBot
+Allow: text
+
+User-Agent: PerplexityBot
+Allow: text
+
+User-Agent: Applebot
+Allow: text
+
+User-Agent: Googlebot
+Allow: text
+
+# Block foundation model training crawlers
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: ClaudeBot
+Disallow: /
+
+User-Agent: Google-Extended
+Disallow: /
+
+User-Agent: CCBot
+Disallow: /
+
+User-Agent: Meta-ExternalAgent
+Disallow: /
+
+User-Agent: Bytespider
+Disallow: /
+
+User-Agent: cohere-ai
+Disallow: /
+
+# Default policy for unlisted agents
+User-Agent: *
+Allow: text
+Disallow: images
+Disallow: audio
+
+# Content signals (informational)
+# search=yes — Content may be indexed for search
+# ai-input=yes — Content may be used for real-time RAG/citations
+# ai-train=no — Content may NOT be used for model training

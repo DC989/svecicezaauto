@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Svecicezaauto — Auto Parts Search",
+  "name_for_model": "svecicezaauto_auto_parts",
+  "description_for_human": "Search through 20,000+ auto ignition parts — spark plugs, ignition coils, control units, distributors, and more. Find parts by OEM number and check vehicle compatibility.",
+  "description_for_model": "Plugin for searching auto ignition parts by OEM/part number. Covers spark plugs (svecice), ignition coils (bobina), control units (kontrolna jedinica), ignition distributors (razvodnik paljenja), ignition modules (modul paljenja), ignition cables, distributor drives, and resistors. Returns part numbers, categories, and compatible vehicle makes/models/years. The search index is available at /search-index.json. Product details are at /proizvod/{id}. Content is in Serbian (default) and Russian (/ru/ prefix).",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://svecicezaauto.rs/apis.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://svecicezaauto.rs/favicon.svg",
+  "contact_email": "kontakt@svecicezaauto.rs",
+  "legal_info_url": "https://svecicezaauto.rs/kontakt"
+}

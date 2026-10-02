@@ -1,0 +1,5 @@
+# Security Contact for svecicezaauto.rs
+Contact: https://svecicezaauto.rs/kontakt
+Preferred-Languages: sr, ru, en
+Canonical: https://svecicezaauto.rs/.well-known/security.txt
+Expires: 2027-10-01T00:00:00.000Z

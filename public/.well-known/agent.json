@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "name": "svecicezaauto",
+  "description": "Auto ignition parts catalog and search service for the Serbian market. Browse 20,000+ parts across 8 categories: spark plugs, ignition coils, control units, ignition distributors, ignition modules, ignition cables, distributor drives, and resistors.",
+  "provider": {
+    "name": "Svecicezaauto",
+    "url": "https://svecicezaauto.rs"
+  },
+  "website": "https://svecicezaauto.rs",
+  "capabilities": {
+    "streaming": false,
+    "multimodal": false
+  },
+  "skills": [
+    {
+      "id": "search_parts",
+      "name": "Search Auto Parts",
+      "description": "Search for auto ignition parts by OEM part number. Returns matching parts with category and product page URL. Use the search index at /search-index.json for client-side lookup."
+    },
+    {
+      "id": "browse_categories",
+      "name": "Browse Part Categories",
+      "description": "Browse parts by category. Available categories: modul-paljenja (ignition modules), kontrolna-jedinica (control units), kalem-za-paljenje-bobina (ignition coils), razvodnik-paljenja (ignition distributors), svecice (spark plugs), pogon-razvodnika-paljenja (distributor drives), kablovi-za-paljenje-delovi (ignition cables), otpornik (resistors). Category pages at /kategorija/{slug}."
+    },
+    {
+      "id": "vehicle_compatibility",
+      "name": "Check Vehicle Compatibility",
+      "description": "View which vehicles are compatible with a specific part. Each product page at /proizvod/{id} lists compatible vehicle makes, models, engine types, and year ranges."
+    }
+  ],
+  "auth": {
+    "type": "none"
+  },
+  "languages": ["sr", "ru"],
+  "contact": {
+    "viber": "+381665040583",
+    "whatsapp": "+381665040583",
+    "url": "https://svecicezaauto.rs/kontakt"
+  }
+}

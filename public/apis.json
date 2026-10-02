@@ -1,0 +1,34 @@
+{
+  "name": "Svecicezaauto API Directory",
+  "description": "Public API endpoints for svecicezaauto.rs auto parts catalog.",
+  "url": "https://svecicezaauto.rs/apis.json",
+  "created": "2026-10-01",
+  "modified": "2026-10-01",
+  "specificationVersion": "0.18",
+  "apis": [
+    {
+      "name": "Product Search Index",
+      "description": "JSON index of all 20,000+ auto ignition parts with part numbers and categories for client-side search.",
+      "humanURL": "https://svecicezaauto.rs/search",
+      "baseURL": "https://svecicezaauto.rs",
+      "properties": [
+        {
+          "type": "X-documentation",
+          "url": "https://svecicezaauto.rs/llms.txt"
+        }
+      ],
+      "contact": [
+        {
+          "FN": "Svecicezaauto Support",
+          "url": "https://svecicezaauto.rs/kontakt"
+        }
+      ]
+    }
+  ],
+  "maintainers": [
+    {
+      "FN": "Svecicezaauto",
+      "url": "https://svecicezaauto.rs"
+    }
+  ]
+}

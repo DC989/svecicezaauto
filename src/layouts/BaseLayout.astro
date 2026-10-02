@@ -57,6 +57,51 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
 
+    <!-- AI Discovery & Content Signals -->
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+    <link rel="describedby" href="/llms-full.txt" type="text/plain" />
+    <link rel="alternate" href="/llms.txt" type="text/markdown" title="LLM-optimized site summary" />
+    <link rel="service-desc" href="/.well-known/mcp.json" type="application/json" />
+    <link rel="service-desc" href="/.well-known/ai-plugin.json" type="application/json" />
+    <link rel="service-desc" href="/.well-known/agent.json" type="application/json" />
+    <link rel="api-catalog" href="/apis.json" type="application/json" />
+    <link rel="author" href="/Auth.md" type="text/markdown" />
+
+    <!-- Content Signals: Allow search & RAG, block training -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="ai-content-declaration" content="search=yes, ai-input=yes, ai-train=no" />
+
+    <!-- Organization Schema.org (site-wide) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Svecicezaauto",
+      "url": "https://svecicezaauto.rs",
+      "description": t('meta.homeDesc'),
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+381-66-504-0583",
+        "contactType": "sales",
+        "availableLanguage": ["Serbian", "Russian"]
+      }
+    })} />
+
+    <!-- WebSite Schema.org with SearchAction -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Svecicezaauto",
+      "url": "https://svecicezaauto.rs",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://svecicezaauto.rs/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
