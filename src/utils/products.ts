@@ -70,10 +70,13 @@ export function getAllProducts(): Product[] {
   }
   try {
     const data = JSON.parse(fs.readFileSync(PRODUCTS_FILE, 'utf-8'));
-    _cachedProducts = (data.products || []).map((p: any) => ({
+    const all = (data.products || []).map((p: any) => ({
       ...p,
       part_number: p.part_number || p.oe_number || ''
     })) as Product[];
+    // Apply Cloudflare asset cap — every consumer (routes, categories,
+    // search index, sitemap) must see the same product set to avoid 404s.
+    _cachedProducts = all.slice(0, MAX_PRODUCT_PAGES_PER_LOCALE);
     return _cachedProducts;
   } catch (error) {
     console.error('Error reading products.json:', error);
