@@ -1,9 +1,9 @@
 ---
 import ProductPage from '../../components/pages/ProductPage.astro';
-import { getAllProducts } from '../../utils/products';
+import { getAllProducts, MAX_PRODUCT_PAGES_PER_LOCALE } from '../../utils/products';
 
 export async function getStaticPaths() {
-  const products = getAllProducts();
+  const products = getAllProducts().slice(0, MAX_PRODUCT_PAGES_PER_LOCALE);
   return products.map((product) => ({
     params: { id: product.id },
     props: { product },

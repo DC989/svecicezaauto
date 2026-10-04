@@ -54,6 +54,14 @@ export const CATEGORY_NAMES: Record<string, string> = {
   'otpornik': 'Otpornik',
 };
 
+/**
+ * Cloudflare Pages free tier: max 20,000 assets per deployment.
+ * Each product costs ~2.86 assets (1 SR page + 1 RU page + ~0.86 images).
+ * Reserve ~1,000 slots for static pages, category pagination, and build assets.
+ * Budget: (20,000 - 1,000) / 2.86 ≈ 6,643 → use 6,500 for safe headroom.
+ */
+export const MAX_PRODUCT_PAGES_PER_LOCALE = 6500;
+
 let _cachedProducts: Product[] | null = null;
 
 export function getAllProducts(): Product[] {
