@@ -76,7 +76,45 @@ export function getAllProducts(): Product[] {
     })) as Product[];
     // Apply Cloudflare asset cap — every consumer (routes, categories,
     // search index, sitemap) must see the same product set to avoid 404s.
-    _cachedProducts = all.slice(0, MAX_PRODUCT_PAGES_PER_LOCALE);
+    // Instead of a naive slice (which fills up with just the first category),
+    // we distribute the 6500 slots fairly across all 8 categories.
+    const categoryCounts: Record<string, number> = {};
+    for (const p of all) {
+      categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+    }
+
+    const quotas: Record<string, number> = {};
+    const sortedCategories = Object.keys(categoryCounts).sort((a, b) => categoryCounts[a] - categoryCounts[b]);
+    
+    let remainingSlots = MAX_PRODUCT_PAGES_PER_LOCALE;
+    let remainingCategories = sortedCategories.length;
+    
+    for (const cat of sortedCategories) {
+      const fairShare = Math.floor(remainingSlots / remainingCategories);
+      const take = Math.min(fairShare, categoryCounts[cat]);
+      quotas[cat] = take;
+      remainingSlots -= take;
+      remainingCategories--;
+    }
+    
+    // Distribute any rounding remainder to the largest categories
+    if (remainingSlots > 0) {
+      const largestCategories = [...sortedCategories].reverse();
+      for (let i = 0; i < remainingSlots; i++) {
+        quotas[largestCategories[i % largestCategories.length]]++;
+      }
+    }
+
+    const taken: Record<string, number> = {};
+    _cachedProducts = all.filter(p => {
+      taken[p.category] = (taken[p.category] || 0);
+      if (taken[p.category] < quotas[p.category]) {
+        taken[p.category]++;
+        return true;
+      }
+      return false;
+    });
+
     return _cachedProducts;
   } catch (error) {
     console.error('Error reading products.json:', error);
