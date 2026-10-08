@@ -4,7 +4,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://svecicezaauto.rs',
   base: '/',
-  integrations: [sitemap()],
+  trailingSlash: 'always',
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/search') && !page.includes('/404')
+    })
+  ],
   i18n: {
     defaultLocale: 'sr',
     locales: ['sr', 'ru'],

@@ -14,6 +14,10 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTranslatedPath(lang: keyof typeof ui) {
   return function translatePath(path: string, l: string = lang) {
-    return l === defaultLang ? path : `/${l}${path}`
+    const trimmed = path.replace(/^\/+|\/+$/g, '');
+    if (l === defaultLang) {
+      return trimmed ? `/${trimmed}/` : '/';
+    }
+    return trimmed ? `/${l}/${trimmed}/` : `/${l}/`;
   }
 }

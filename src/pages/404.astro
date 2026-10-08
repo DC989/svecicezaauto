@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations, getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { CATEGORY_MAP, CATEGORY_NAMES } from '../utils/products';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const categories = Object.entries(CATEGORY_MAP).map(([catKey, slug]) => {
+  const transKey = `cat.${slug}` as keyof typeof t;
+  // @ts-ignore
+  const name = t(transKey) !== transKey ? t(transKey) : (CATEGORY_NAMES[slug] || catKey);
+  return { slug, name };
+});
+---
+
+<BaseLayout
+  title={lang === 'ru' ? '404 - Страница не найдена | Svecicezaauto' : '404 - Stranica nije pronađena | Svecicezaauto'}
+  description={lang === 'ru' ? 'Запрошенная страница не существует. Поиск автозапчастей.' : 'Tražena stranica ne postoji. Pretražite delove za auto.'}
+  noindex={true}
+>
+  <div class="body-layout">
+    <main class="catalog-content" style="max-width: 720px; margin: 40px auto; text-align: center; padding: 32px 16px;">
+      <div style="font-size: 72px; font-weight: 800; color: #0033a0; line-height: 1; margin-bottom: 12px;">404</div>
+      <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; color: #111;">
+        {lang === 'ru' ? 'Страница не найдена' : 'Stranica nije pronađena'}
+      </h1>
+      <p style="font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 28px;">
+        {lang === 'ru'
+          ? 'Запрашиваемая вами страница не существует, была перемещена или удалена. Воспользуйтесь поиском по номеру детали или выберите категорию ниже.'
+          : 'Stranica koju tražite ne postoji ili je premeštena. Možete pretražiti naš katalog po broju dela ili izabrati željenu kategoriju ispod.'}
+      </p>
+
+      <form action={translatePath('/search/')} method="get" style="display: flex; gap: 8px; justify-content: center; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        <input
+          type="search"
+          name="q"
+          placeholder={lang === 'ru' ? 'Поиск по номеру детали...' : 'Pretraga po broju dela...'}
+          style="flex: 1; padding: 10px 14px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;"
+          required
+        />
+        <button
+          type="submit"
+          style="background: #0033a0; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 600; cursor: pointer;"
+        >
+          {lang === 'ru' ? 'Найти' : 'Pretraži'}
+        </button>
+      </form>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; text-align: left; margin-bottom: 28px;">
+        <h3 style="font-size: 15px; margin-bottom: 12px; color: #111;">
+          {lang === 'ru' ? 'Популярные категории:' : 'Popularne kategorije:'}
+        </h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          {categories.slice(0, 6).map((cat) => (
+            <a
+              href={translatePath(`/kategorija/${cat.slug}/`)}
+              style="display: inline-block; padding: 6px 12px; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 13px; color: #0033a0; text-decoration: none;"
+            >
+              {cat.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a
+          href={translatePath('/')}
+          style="display: inline-block; padding: 10px 20px; background: #e6f0ff; color: #0033a0; border-radius: 4px; font-weight: 600; text-decoration: none;"
+        >
+          {lang === 'ru' ? '← На главную' : '← Početna strana'}
+        </a>
+        <a
+          href="https://wa.me/381665040583"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-block; padding: 10px 20px; background: #25d366; color: #fff; border-radius: 4px; font-weight: 600; text-decoration: none;"
+        >
+          WhatsApp {lang === 'ru' ? 'поддержка' : 'podrška'}
+        </a>
+      </div>
+    </main>
+  </div>
+</BaseLayout>

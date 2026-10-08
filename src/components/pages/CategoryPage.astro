@@ -16,8 +16,9 @@ const translatePath = useTranslatedPath(lang);
 const translationKey = `cat.${id}` as keyof typeof t;
 // @ts-ignore
 const categoryName = t(translationKey) !== translationKey ? t(translationKey) : (CATEGORY_NAMES[id] || id);
+const pageSuffix = page.currentPage > 1 ? ` (${t('pagination.page')} ${page.currentPage})` : '';
 ---
-<BaseLayout title={`${categoryName} - ${t('meta.prodTitleSuffix')}`} description={`Svi proizvodi u kategoriji ${categoryName}. Pretraga, cene i dostupnost.`}>
+<BaseLayout title={`${categoryName}${pageSuffix} - ${t('meta.prodTitleSuffix')}`} description={`Svi proizvodi u kategoriji ${categoryName}${pageSuffix}. Pretraga, cene i dostupnost.`}>
   <div class="body-layout">
     <main class="catalog-content">
       <div class="breadcrumb">
@@ -38,7 +39,14 @@ const categoryName = t(translationKey) !== translationKey ? t(translationKey) : 
             <a href={translatePath(`/proizvod/${product.id}`)} class="product-card">
               <div class="product-card__img-wrap">
                 {product.images && product.images[0] ? (
-                  <img src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="lazy" class="product-card__img" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`}
+                    alt={`${productCatName} ${product.part_number}`}
+                    loading="lazy"
+                    width="180"
+                    height="135"
+                    class="product-card__img"
+                  />
                 ) : (
                   <div class="product-placeholder">{t('product.noImage')}</div>
                 )}

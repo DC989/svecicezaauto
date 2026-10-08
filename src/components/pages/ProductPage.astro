@@ -18,13 +18,18 @@ const translationKey = `cat.${categorySlug}` as keyof typeof t;
 // @ts-ignore (We check if it exists in UI)
 const categoryName = t(translationKey) !== translationKey ? t(translationKey) : (CATEGORY_NAMES[categorySlug] || product.category);
 
+const productImageRel = product.images && product.images[0]
+  ? `${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`
+  : `${import.meta.env.BASE_URL}parts/part-default.svg`;
+const productImageFull = new URL(productImageRel, Astro.site).toString();
+
 const schema = {
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": `${t('meta.prodTitlePrefix')} ${product.part_number} - ${categoryName}`,
   "sku": product.part_number,
   "mpn": product.part_number,
-  "image": new URL(`${import.meta.env.BASE_URL}parts/part-default.svg`, Astro.site),
+  "image": productImageFull,
   "description": product.description || `Kupi deo ${product.part_number} online.`,
   "category": categoryName,
   "brand": {
@@ -86,7 +91,11 @@ const breadcrumbSchema = {
   ]
 };
 ---
-<BaseLayout title={`${t('meta.prodTitlePrefix')} ${product.part_number} - ${t('meta.prodTitleSuffix')}`} description={`${categoryName} - ${t('meta.prodTitlePrefix')} ${product.part_number}. ${t('product.checkPrice')}`}>
+<BaseLayout
+  title={`${t('meta.prodTitlePrefix')} ${product.part_number} - ${t('meta.prodTitleSuffix')}`}
+  description={`${categoryName} - ${t('meta.prodTitlePrefix')} ${product.part_number}. ${t('product.checkPrice')}`}
+  image={productImageFull}
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -102,7 +111,14 @@ const breadcrumbSchema = {
           <div class="product-detail__gallery">
             <div class="product-detail__img-main">
               {product.images && product.images[0] ? (
-                <img src={`${import.meta.env.BASE_URL}${product.images[0].replace('images/', 'images/products/')}`} alt={product.part_number} loading="eager" />
+                <img
+                  src={productImageRel}
+                  alt={`${categoryName} ${product.part_number}`}
+                  loading="eager"
+                  width="400"
+                  height="300"
+                  style="max-width: 100%; height: auto; object-fit: contain;"
+                />
               ) : (
                 <div class="product-placeholder">{t('product.noImage')}</div>
               )}

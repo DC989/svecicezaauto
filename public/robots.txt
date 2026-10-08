@@ -9,6 +9,8 @@ Content-Signal: ai-train=no, search=yes, ai-input=yes
 # Default: Allow all standard crawlers
 User-agent: *
 Allow: /
+Disallow: /search
+Disallow: /ru/search
 
 # ===========================================
 # AI SEARCH & RETRIEVAL BOTS (ALLOWED)
