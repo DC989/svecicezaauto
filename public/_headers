@@ -1,2 +1,2 @@
 /*
-  Link: </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp.json>; rel="service-desc"
+  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="describedby", </auth.md>; rel="author", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"
